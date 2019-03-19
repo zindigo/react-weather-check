@@ -3,6 +3,7 @@ var ReactRouter = require('react-router-dom');
 var Router = ReactRouter.BrowserRouter;
 var Route = ReactRouter.Route;
 var Switch = ReactRouter.Switch;
+var Nav = require('./Nav');
 var Home = require('./Home');
 var Forecast = require('./Forecast');
 
@@ -11,6 +12,7 @@ class App extends React.Component {
 		return (
 		    <Router>
 			    <div className='container'>
+			    	<Nav />
 			    	<Switch>
 				    	<Route exact path='/' component={Home} />
 				    	<Route path='/forecast' component={Forecast} />
