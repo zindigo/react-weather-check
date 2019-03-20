@@ -16,6 +16,7 @@ class CityInput extends React.Component {
 	}
 	handleChange(event) {
 		var value = event.target.value;
+		console.log('value changed: '+value);
 
 		this.setState(function() {
 			return {
@@ -25,6 +26,8 @@ class CityInput extends React.Component {
 	}
 	handleSubmit(event) {
 		event.preventDefault();
+		console.log('form submitted');
+		console.log(this.state.city);
 
 		this.props.onSubmit(
 		    this.state.city
@@ -45,9 +48,9 @@ class CityInput extends React.Component {
 		    		onChange={this.handleChange}
 		    	/>
 		    	<button
+		    		onClick={this.handleSubmit}
 		    		className='btn btn-success'
 		    		type='submit'
-		    		disabled={!this.state.city}
 		    		style={{ margin: '10px' }}>
 		    			Get Weather
 		    	</button>

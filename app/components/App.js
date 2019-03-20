@@ -1,27 +1,53 @@
 var React = require('react');
 var ReactRouter = require('react-router-dom');
-var Router = ReactRouter.BrowserRouter;
+var BrowserRouter = ReactRouter.BrowserRouter;
 var Route = ReactRouter.Route;
 var Switch = ReactRouter.Switch;
-var Nav = require('./Nav');
-var Home = require('./Home');
 var Forecast = require('./Forecast');
+var CityInput = require('./CityInput');
 
 class App extends React.Component {
 	render() {
 		return (
-		    <Router>
+		    <BrowserRouter>
 			    <div className='container'>
-			    	<Nav />
-			    	<Switch>
-				    	<Route exact path='/' component={Home} />
-				    	<Route path='/forecast' component={Forecast} />
-				    	<Route render={function () {
-				    		return <p>Not Found</p>
-				    	}} />
-			    	</Switch>
+				    <Route render={function (props) {
+	            		return (
+					    	<div className='navbar'>
+						    	<h1>Check the Weather</h1>
+					    		<CityInput
+					    			onSubmit={function(city) {
+					                    props.history.push({
+					                      pathname: 'forecast',
+					                      search: '?city=' + city
+					                    });
+					                }}
+					    			flexDirection='row' />
+						    </div>
+						)
+					}} />
+
+				    <Route exact path='/' render={function (props) {
+				    	return (
+				    	    <div className='home-container' style={{ backgroundImage: "url('app/images/pattern.svg')"}}>
+				    	    	<h1 className='header'>Enter a City and State</h1>
+				    	    	<CityInput
+					    			onSubmit={function(city) {
+					                    props.history.push({
+					                      pathname: 'forecast',
+					                      search: '?city=' + city
+					                    });
+					                }}
+					    			flexDirection='column' />
+					    	</div>
+				    	)
+				    }} />
+
+				    <Route path='/forecast' component={Forecast} />
+
+
 			    </div>
-		    </Router>
+		    </BrowserRouter>
 		)
 	}
 }
