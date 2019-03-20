@@ -25,12 +25,8 @@ class Nav extends React.Component {
 
 		return (
 		    <div className = 'navbar'>
-		    	<div className='left'>
-		    		Logo here
-		    	</div>
-		    	<div className='right'>
-		    		<CityInput onSubmit={this.handleSubmit} />
-		    	</div>
+		    	<h1>Check the Weather</h1>
+	    		<CityInput onSubmit={this.handleSubmit} flexDirection='row' />
 		    </div>
 		)
 	}

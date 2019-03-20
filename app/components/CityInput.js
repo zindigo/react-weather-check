@@ -7,7 +7,8 @@ class CityInput extends React.Component {
 		super(props);
 
 		this.state = {
-			city: ''
+			city: '',
+			flexDirection: null
 		}
 
 		this.handleChange = this.handleChange.bind(this);
@@ -30,12 +31,12 @@ class CityInput extends React.Component {
 		)
 	}
 	render() {
+		var flexDirection = this.props.flexDirection;
+
 		return (
-		    <form className='column' onSubmit={this.handleSubmit}>
-		    	<label className='header' htmlFor='username'>
-		    		{this.props.label}
-		    	</label>
+		    <div className='city-container' style={{ flexDirection: flexDirection }}>
 		    	<input
+		    		className='form-control'
 		    		id='city'
 		    		placeholder='Orlando, Florida'
 		    		type='text'
@@ -44,18 +45,18 @@ class CityInput extends React.Component {
 		    		onChange={this.handleChange}
 		    	/>
 		    	<button
-		    		className='button'
+		    		className='btn btn-success'
 		    		type='submit'
-		    		disabled={!this.state.city}>
-		    			Submit
+		    		disabled={!this.state.city}
+		    		style={{ margin: '10px' }}>
+		    			Get Weather
 		    	</button>
-		    </form>
+		    </div>
 		)
 	}
 }
 
 CityInput.propTypes = {
-	label: PropTypes.string,
 	onSubmit: PropTypes.func.isRequired
 }
 

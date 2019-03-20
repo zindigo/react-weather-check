@@ -24,11 +24,19 @@ class Home extends React.Component {
 
 	render() {
 		var city = this.state.city;
+		var backgroundImage = "app/images/pattern.svg";
 
 		return (
-		    <div className='home-container'>
+		    <div className='home-container' style={{ backgroundImage: 'url(' + backgroundImage + ')' }}>
+				<h1 className='header'>
+		    		Enter a City and State
+		    	</h1>
 		    	{!city &&
-		    		<CityInput label='Enter a City and State' onSubmit={this.handleSubmit} />
+		    		<CityInput
+		    			label='Enter a City and State'
+		    			onSubmit={this.handleSubmit}
+		    			flexDirection='column'
+		    		/>
 		    	}
 		    	{city !== null &&
 		    		<Forecast />
