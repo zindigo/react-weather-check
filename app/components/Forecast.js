@@ -5,7 +5,7 @@ var queryString = require('query-string');
 class Forecast extends React.Component {
 	componentDidMount() {
 		const values = queryString.parse(this.props.location.search);
-		api.fetch5DayWeather(values.city);
+		api.get5DayWeather(values.city);
 	}
 	render() {
 		return (
