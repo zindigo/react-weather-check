@@ -35,8 +35,15 @@ class Forecast extends React.Component {
 	render() {
 		    return this.state.loading === true
 		      ? <div>Loading</div>
-		      : <div>Forecast Component</div>
+		      : <DailyWeather />
 	}
 }
+
+function DailyWeather (result) {
+	return (
+	    <div>Test Daily Weather</div>
+	)
+}
+
 
 module.exports = Forecast;
