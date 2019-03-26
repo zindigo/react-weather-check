@@ -58,12 +58,13 @@ function WeatherList(props) {
 	console.log(dailyItems);
 	var listItems = dailyItems.map(function(day) {
 		var icon = day.weather[0].icon;
+		var dayOfWeek = helpers.getDayOfTheWeek(day.dt_txt);
 		var date = helpers.getFormattedDate(day.dt_txt);
 		return (
-		    <div key={day.dt}>
+		    <div className='date' key={day.dt}>
 		    	<img className='weather' src={'/app/images/weather-icons/' + icon + '.svg'} alt='Weather' />
-		    	<br />
-		    	{date}
+		    	<br />{dayOfWeek}
+		    	<br />{date}
 		    </div>
 		);
 	});

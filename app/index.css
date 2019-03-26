@@ -32,12 +32,13 @@ li {
 
 .home-container, .forecast-container {
 	display: flex;
-    justify-content: center;
+    /*justify-content: center;*/
     align-items: center;
 	height: 100%;
     width: 100%;
     background-size: cover;
     flex-direction: column;
+    padding-top: 100px;
 }
 
 .home-container {
@@ -50,6 +51,7 @@ li {
 	justify-content: center;
 	align-items: center;
 	text-align: center;
+	flex-wrap: wrap;
 }
 
 .btn-success {
@@ -106,7 +108,12 @@ li {
 }
 
 .weather {
-	width: 200px;
-	height: 200px;
+	width: 150px;
+	height: 150px;
 	padding: 30px;
+}
+
+.date {
+	font-weight: 100;
+	font-size: 24px;
 }
