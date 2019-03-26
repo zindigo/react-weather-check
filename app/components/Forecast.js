@@ -1,5 +1,6 @@
 var React = require('react');
 var api = require('../utils/api');
+var helpers = require('../utils/helpers');
 var queryString = require('query-string');
 
 class Forecast extends React.Component {
@@ -50,18 +51,19 @@ class Forecast extends React.Component {
 function WeatherList(props) {
 	var daily = props.weatherResult;
 	var noon = '12:00:00';
-	// filter out the daily weather at noon
+	// filter out the results to only get daily weather at noon
 	var dailyItems = daily.filter(function(day) {
 		return day.dt_txt.includes(noon);
 	});
 	console.log(dailyItems);
 	var listItems = dailyItems.map(function(day) {
 		var icon = day.weather[0].icon;
+		var date = helpers.getFormattedDate(day.dt_txt);
 		return (
 		    <div key={day.dt}>
 		    	<img className='weather' src={'/app/images/weather-icons/' + icon + '.svg'} alt='Weather' />
 		    	<br />
-		    	{day.dt_txt}
+		    	{date}
 		    </div>
 		);
 	});
