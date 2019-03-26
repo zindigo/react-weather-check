@@ -12,7 +12,7 @@ var params = '&APPID=' + api_key;
 function get5DayWeather (city) {
 	return axios.get('https://api.openweathermap.org/data/2.5/forecast?q=' + city + params)
 		.then(function (weather) {
-			return weather.data;
+			return weather.data.list;
 		});
 }
 

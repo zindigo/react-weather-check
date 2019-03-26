@@ -6,6 +6,8 @@ class Forecast extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			city: null,
+			weatherResult: [],
 			loading: false
 		}
 
@@ -18,15 +20,17 @@ class Forecast extends React.Component {
 	makeRequest(city) {
 		this.setState(function () {
 			return {
+				city: city,
 				loading: true
 			}
 		})
 
 		api.get5DayWeather(city)
 			.then(function (result) {
-				console.log(result)
+				console.log(result.list)
 				this.setState(function() {
 					return {
+						weatherResult: result,
 						loading: false
 					}
 				})
@@ -34,15 +38,36 @@ class Forecast extends React.Component {
 	}
 	render() {
 		    return this.state.loading === true
-		      ? <div>Loading</div>
-		      : <DailyWeather />
+		      ? <div className='header'>Loading...</div>
+		      : <div className='forecast-container'>
+			    	<h1 className='header'>{this.state.city}</h1>
+			    	<WeatherList weatherResult={this.state.weatherResult} />
+			    </div>
 	}
 }
 
-function DailyWeather (result) {
+/* Display the 5 day forecast */
+function WeatherList(props) {
+	var daily = props.weatherResult;
+	var noon = '12:00:00';
+	// filter out the daily weather at noon
+	var dailyItems = daily.filter(function(day) {
+		return day.dt_txt.includes(noon);
+	});
+	console.log(dailyItems);
+	var listItems = dailyItems.map(function(day) {
+		var icon = day.weather[0].icon;
+		return (
+		    <div key={day.dt}>
+		    	<img className='weather' src={'/app/images/weather-icons/' + icon + '.svg'} alt='Weather' />
+		    	<br />
+		    	{day.dt_txt}
+		    </div>
+		);
+	});
 	return (
-	    <div>Test Daily Weather</div>
-	)
+	    <div className='daily-weather'>{listItems}</div>
+	);
 }
 
 
