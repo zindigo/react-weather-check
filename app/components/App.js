@@ -3,6 +3,7 @@ var ReactRouter = require('react-router-dom');
 var BrowserRouter = ReactRouter.BrowserRouter;
 var Route = ReactRouter.Route;
 var Switch = ReactRouter.Switch;
+var Link = ReactRouter.Link;
 var Forecast = require('./Forecast');
 var CityInput = require('./CityInput');
 
@@ -14,7 +15,7 @@ class App extends React.Component {
 				    <Route render={function (props) {
 	            		return (
 					    	<div className='navbar'>
-						    	<h1>Check the Weather</h1>
+						    	<h1><Link to='/' className='h1'>Check The Weather</Link></h1>
 					    		<CityInput
 					    			onSubmit={function(city) {
 					                    props.history.push({
