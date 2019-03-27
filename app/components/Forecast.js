@@ -2,6 +2,7 @@ var React = require('react');
 var api = require('../utils/api');
 var helpers = require('../utils/helpers');
 var queryString = require('query-string');
+var DailyWeather = require('./DailyWeather');
 
 class Forecast extends React.Component {
 	constructor(props) {
@@ -13,6 +14,7 @@ class Forecast extends React.Component {
 		}
 
 		this.makeRequest = this.makeRequest.bind(this);
+		this.handleClick = this.handleClick.bind(this);
 	}
 	componentDidMount() {
 		const values = queryString.parse(this.props.location.search);
@@ -26,52 +28,41 @@ class Forecast extends React.Component {
 			}
 		})
 
-		api.get5DayWeather(city)
+		var allWeather = api.get5DayWeather(city)
 			.then(function (result) {
-				console.log(result.list)
 				this.setState(function() {
+
+					// filter out the results to only get daily weather at noon
+					var noon = '12:00:00';
+					var fiveDaysOfWeather = result.filter(function(day) {
+						return day.dt_txt.includes(noon);
+					});
+
 					return {
-						weatherResult: result,
+						weatherResult: fiveDaysOfWeather,
 						loading: false
 					}
 				})
-			}.bind(this))
+			}.bind(this));
+
+	}
+	handleClick(listItem) {
+		console.log('item clicked');
 	}
 	render() {
 		    return this.state.loading === true
 		      ? <div className='header'>Loading...</div>
-		      : <div className='forecast-container'>
-			    	<h1 className='header'>{this.state.city}</h1>
-			    	<WeatherList weatherResult={this.state.weatherResult} />
-			    </div>
+		      : <div>
+		      		<h1 className='header'>{this.state.city}</h1>
+			      	<div className='forecast-container'>
+			      		{this.state.weatherResult.map(function(dailyItem) {
+			      			return (
+			      				<DailyWeather onClick={this.handleClick.bind(this, dailyItem)} day={dailyItem} key={dailyItem.dt} />
+			      			)
+			      		}, this) }
+				    </div>
+				</div>
 	}
 }
-
-/* Display the 5 day forecast */
-function WeatherList(props) {
-	var daily = props.weatherResult;
-	var noon = '12:00:00';
-	// filter out the results to only get daily weather at noon
-	var dailyItems = daily.filter(function(day) {
-		return day.dt_txt.includes(noon);
-	});
-	console.log(dailyItems);
-	var listItems = dailyItems.map(function(day) {
-		var icon = day.weather[0].icon;
-		var dayOfWeek = helpers.getDayOfTheWeek(day.dt_txt);
-		var date = helpers.getFormattedDate(day.dt_txt);
-		return (
-		    <div className='date' key={day.dt}>
-		    	<img className='weather' src={'/app/images/weather-icons/' + icon + '.svg'} alt='Weather' />
-		    	<br />{dayOfWeek}
-		    	<br />{date}
-		    </div>
-		);
-	});
-	return (
-	    <div className='daily-weather'>{listItems}</div>
-	);
-}
-
 
 module.exports = Forecast;
