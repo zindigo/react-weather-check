@@ -52,18 +52,18 @@ class Forecast extends React.Component {
 		console.log(dailyItem);
 	}
 	render() {
-		    return this.state.loading === true
-		      ? <h1 className='header'>Loading...</h1>
-		      : <div>
-		      		<h1 className='header'>{this.state.city}</h1>
-			      	<div className='forecast-container'>
-			      		{this.state.weatherResult.map(function(dailyItem) {
-			      			return (
-			      				<DailyWeather onClick={this.handleClick.bind(this, dailyItem)} day={dailyItem} key={dailyItem.dt} />
-			      			)
-			      		}, this) }
-				    </div>
-				</div>
+	    return this.state.loading === true
+	      ? <h1 className='header'>Loading...</h1>
+	      : <div>
+	      		<h1 className='header'>{this.state.city}</h1>
+		      	<div className='forecast-container'>
+		      		{this.state.weatherResult.map(function(dailyItem) {
+		      			return (
+		      				<DailyWeather onClick={this.handleClick.bind(this, dailyItem)} day={dailyItem} key={dailyItem.dt} />
+		      			)
+		      		}, this) }
+			    </div>
+			</div>
 	}
 }
 
