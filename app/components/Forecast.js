@@ -46,12 +46,14 @@ class Forecast extends React.Component {
 			}.bind(this));
 
 	}
-	handleClick(listItem) {
+	handleClick(dailyItem) {
 		console.log('item clicked');
+		console.log(this.state.city);
+		console.log(dailyItem);
 	}
 	render() {
 		    return this.state.loading === true
-		      ? <div className='header'>Loading...</div>
+		      ? <h1 className='header'>Loading...</h1>
 		      : <div>
 		      		<h1 className='header'>{this.state.city}</h1>
 			      	<div className='forecast-container'>

@@ -1,4 +1,5 @@
 var React = require('react');
+var PropTypes = require('prop-types');
 var helpers = require('../utils/helpers');
 
 function DailyWeather(props) {
@@ -9,13 +10,18 @@ function DailyWeather(props) {
 	var date = helpers.getFormattedDate(listItem.dt_txt);
 
 	return (
-	    <div className='date' onClick={props.handleClick}>
+	    <div className='date' onClick={props.onClick}>
 	    	<img className='weather-icon' src={'/app/images/weather-icons/' + icon + '.svg'} alt='Weather' />
 	    	<br />{dayOfWeek}
 	    	<br />{date}
 	    </div>
 	);
 
+}
+
+DailyWeather.propTypes = {
+	day: PropTypes.object.isRequired,
+	onClick: PropTypes.func.isRequired
 }
 
 module.exports = DailyWeather;
