@@ -21,9 +21,16 @@ function convertKelvinToFarenheit (temp) {
 	return f;
 }
 
+/* Capitalize the first letter of each word in string */
+function capitalize(value) {
+	value = value.toLowerCase();
+ 	return value.replace( /(^|\s)([a-z])/g , function(m,p1,p2){ return p1+p2.toUpperCase(); } );
+ }
+
 module.exports =  {
 	getFormattedDate: getFormattedDate,
 	getDayOfTheWeek: getDayOfTheWeek,
 	convertKtoC: convertKelvinToCelsius,
-	convertKtoF: convertKelvinToFarenheit
+	convertKtoF: convertKelvinToFarenheit,
+	capitalize: capitalize
 };

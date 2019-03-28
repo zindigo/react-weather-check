@@ -7,6 +7,7 @@ var Link = ReactRouter.Link;
 var Forecast = require('./Forecast');
 var Detail = require('./Detail');
 var CityInput = require('./CityInput');
+var capitalize = require('../utils/helpers').capitalize;
 
 class App extends React.Component {
 	render() {
@@ -21,7 +22,7 @@ class App extends React.Component {
 					    			onSubmit={function(city) {
 					                    props.history.push({
 					                      pathname: '/forecast',
-					                      search: '?city=' + city
+					                      search: '?city=' + capitalize(city)
 					                    });
 					                }}
 					    			flexDirection='row' />
@@ -37,7 +38,7 @@ class App extends React.Component {
 					    			onSubmit={function(city) {
 					                    props.history.push({
 					                      pathname: '/forecast',
-					                      search: '?city=' + city
+					                      search: '?city=' + capitalize(city)
 					                    });
 					                }}
 					    			flexDirection='column' />
