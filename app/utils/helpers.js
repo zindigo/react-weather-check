@@ -12,13 +12,11 @@ function getDayOfTheWeek (dateTime) {
 }
 
 function convertKelvinToCelsius (temp) {
-	console.log('convert to celsius ' + temp);
 	var c = temp - 273.15;
 	return c;
 }
 
 function convertKelvinToFarenheit (temp) {
-	console.log('convert to F ' + temp);
 	var f = (temp - 273.15) * 9/5 + 32;
 	return f;
 }
