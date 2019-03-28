@@ -8,7 +8,7 @@ class Detail extends React.Component {
 	render() {
 		var details = this.props.location.state;
 		var description = details.weather[0].description;
-		description = description.charAt(0).toUpperCase() + description.slice(1);
+		description = helpers.capitalize(description);
 		var temp_max = helpers.convertKtoF(details.main.temp_max).toFixed(0);
 		return (
 		    <div className='txt-center'>
