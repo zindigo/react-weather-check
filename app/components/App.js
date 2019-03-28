@@ -11,7 +11,7 @@ var CityInput = require('./CityInput');
 class App extends React.Component {
 	render() {
 		return (
-		    <BrowserRouter>
+		    <BrowserRouter forceRefresh={true}>
 			    <div className='container'>
 				    <Route render={function (props) {
 	            		return (
