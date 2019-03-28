@@ -20,7 +20,7 @@ class App extends React.Component {
 					    		<CityInput
 					    			onSubmit={function(city) {
 					                    props.history.push({
-					                      pathname: 'forecast',
+					                      pathname: '/forecast',
 					                      search: '?city=' + city
 					                    });
 					                }}
@@ -36,7 +36,7 @@ class App extends React.Component {
 				    	    	<CityInput
 					    			onSubmit={function(city) {
 					                    props.history.push({
-					                      pathname: 'forecast',
+					                      pathname: '/forecast',
 					                      search: '?city=' + city
 					                    });
 					                }}
