@@ -5,7 +5,7 @@ var Route = ReactRouter.Route;
 var Switch = ReactRouter.Switch;
 var Link = ReactRouter.Link;
 var Forecast = require('./Forecast');
-var Details = require('./Details');
+var Detail = require('./Detail');
 var CityInput = require('./CityInput');
 
 class App extends React.Component {
@@ -47,7 +47,7 @@ class App extends React.Component {
 
 				    <Route path='/forecast' component={Forecast} />
 
-				    <Route path='/details:city' component={Details} />
+				    <Route path='/detail' component={Detail} />
 
 			    </div>
 		    </BrowserRouter>

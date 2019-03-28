@@ -1,4 +1,5 @@
 var React = require('react');
+var Redirect = require('react-router-dom');
 var api = require('../utils/api');
 var helpers = require('../utils/helpers');
 var queryString = require('query-string');
@@ -47,9 +48,12 @@ class Forecast extends React.Component {
 
 	}
 	handleClick(dailyItem) {
-		console.log('item clicked');
-		console.log(this.state.city);
-		console.log(dailyItem);
+		dailyItem['city'] = this.state.city;
+
+		this.props.history.push({
+          pathname: 'detail/' + this.state.city,
+          state: dailyItem
+        });
 	}
 	render() {
 	    return this.state.loading === true

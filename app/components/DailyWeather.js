@@ -10,7 +10,7 @@ function DailyWeather(props) {
 	var date = helpers.getFormattedDate(listItem.dt_txt);
 
 	return (
-	    <div className='date' onClick={props.onClick}>
+	    <div className='txt-center' onClick={props.onClick}>
 	    	<img className='weather-icon' src={'/app/images/weather-icons/' + icon + '.svg'} alt='Weather' />
 	    	<br />{dayOfWeek}
 	    	<br />{date}
@@ -21,7 +21,7 @@ function DailyWeather(props) {
 
 DailyWeather.propTypes = {
 	day: PropTypes.object.isRequired,
-	onClick: PropTypes.func.isRequired
+	onClick: PropTypes.func
 }
 
 module.exports = DailyWeather;
