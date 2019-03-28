@@ -10,7 +10,7 @@ function DailyWeather(props) {
 	var date = helpers.getFormattedDate(listItem.dt_txt);
 
 	return (
-	    <div className='txt-center' onClick={props.onClick}>
+	    <div className='txt-center daily-weather' onClick={props.onClick}>
 	    	<img className='weather-icon' src={'/app/images/weather-icons/' + icon + '.svg'} alt='Weather' />
 	    	<br />{dayOfWeek}
 	    	<br />{date}
