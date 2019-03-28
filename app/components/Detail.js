@@ -1,6 +1,8 @@
 var React = require('react');
 var helpers = require('../utils/helpers');
 var DailyWeather = require('./DailyWeather');
+var ReactRouter = require('react-router-dom');
+var BrowserHistory = ReactRouter.BrowserHistory;
 
 class Detail extends React.Component {
 	render() {
@@ -9,7 +11,7 @@ class Detail extends React.Component {
 		description = description.charAt(0).toUpperCase() + description.slice(1);
 		var temp_max = helpers.convertKtoF(details.main.temp_max).toFixed(0);
 		return (
-		    <div>
+		    <div className='txt-center'>
 		    	<h1 className='header'>{details.city}</h1>
 		    	<div className='details-container'>
 			    	<DailyWeather day={details} />
@@ -19,6 +21,13 @@ class Detail extends React.Component {
 				    	<p>Humidity: {details.main.humidity}%</p>
 			    	</div>
 			    </div>
+			    <button
+		    		onClick={this.props.history.goBack}
+		    		className='btn btn-success'
+		    		type='submit'
+		    		style={{ margin: '10px' }}>
+		    			&lt;- Go Back
+		    	</button>
 		   	</div>
 		)
 	}
