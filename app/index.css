@@ -46,6 +46,7 @@ a {
     background-size: cover;
     flex-direction: column;
     padding-top: 100px;
+    background-image: url('images/pattern.svg');
 }
 
 .home-container {

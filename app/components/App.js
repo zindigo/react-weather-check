@@ -33,7 +33,7 @@ class App extends React.Component {
 
 				    <Route exact path='/' render={function (props) {
 				    	return (
-				    	    <div className='home-container' style={{ backgroundImage: "url('app/images/pattern.svg')"}}>
+				    	    <div className='home-container'>
 				    	    	<h1 className='header'>Enter a City and State</h1>
 				    	    	<CityInput
 					    			onSubmit={function(city) {
