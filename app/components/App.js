@@ -8,6 +8,7 @@ var Forecast = require('./Forecast');
 var Detail = require('./Detail');
 var CityInput = require('./CityInput');
 var capitalize = require('../utils/helpers').capitalize;
+require.context('../images', true, /\.svg$/);
 
 class App extends React.Component {
 	render() {
