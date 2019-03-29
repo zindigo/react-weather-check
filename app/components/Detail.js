@@ -58,8 +58,8 @@ class Detail extends React.Component {
 			    	<div className='details'>
 				    	<p>{description}</p>
 				    	<p>Noon Temperature: {this.state.noonTemp}&deg; {this.state.units}<br />
-				    	<button onClick={this.handleClick.bind(this, 'C')}>&deg; C</button>
-				    	<button onClick={this.handleClick.bind(this, 'F')}>&deg; F</button>
+				    	<button className='btn btn-info' onClick={this.handleClick.bind(this, 'C')}>&deg; C</button>
+				    	<button className='btn btn-info' onClick={this.handleClick.bind(this, 'F')}>&deg; F</button>
 				    	</p>
 				    	<p>Humidity: {details.main.humidity}%</p>
 			    	</div>
